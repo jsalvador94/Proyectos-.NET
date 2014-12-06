@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../MasterP.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="left">
+        left
+    </ui:define>
+
+    <ui:define name="content">
+        <f:view>
+            <p:growl sticky="true" />
+            
+            <h:form enctype="multipart/form-data">
+                 
+                <h:outputText value="Registrar Datos del usuario"/>
+                <p:panelGrid columns="2">
+                    
+                     <p:outputLabel value="Nombre del Usuario : " for="usuarioid" />
+                    <p:selectOneMenu id="usuarioid" value="#{datospControlador.selected.usuarioid}"  required="true" requiredMessage="The Tipo field is required.">
+                        <f:selectItems value="#{usuarioControlador.listasusuario}" />
+                    </p:selectOneMenu>
+                    
+                     <p:outputLabel value="Nombre:" for="nombre" />
+                     <p:inputText id="nombre" value="#{datospControlador.selected.nombres}" title="Nombre" required="true" requiredMessage="La cantidad es obligatorio"/>
+                    
+                    <p:outputLabel value="Apellidos:" for="apellido" />
+                    <p:inputText id="apellido" value="#{datospControlador.selected.apellidos}" title="Nombre" required="true" requiredMessage="La cantidad es obligatorio"/>
+                    
+                    <p:outputLabel value="Direccion:" for="direccion" />
+                    <p:inputText id="direccion" value="#{datospControlador.selected.direccion}" title="Nombre" required="true" requiredMessage="La cantidad es obligatorio"/>
+                    
+                    <p:outputLabel value="Genero:" for="genero" />
+                    <p:inputText id="genero" value="#{datospControlador.selected.genero}" title="Nombre" required="true" requiredMessage="La cantidad es obligatorio"/>
+                    
+                    <p:outputLabel value="DUI:" for="dui" />
+                    <p:inputText id="dui" value="#{datospControlador.selected.dui}" title="Nombre" required="true" requiredMessage="La cantidad es obligatorio"/>
+                    
+                    <p:outputLabel value="Fecha de nacimiento" for="fechaNac" />
+                    <p:calendar id="fechaNac" value="#{datospControlador.selected.fechaNac}" title="Capturado" mode="popup" showOn="button" />
+                  
+                    
+                </p:panelGrid>
+               
+                <h:commandButton value="Guardar" action="#{datospControlador.crear()}" />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <p:commandButton value="Ir a todos los detalles" action="#{datospControlador.prepararLista()}" immediate="true"/>
+            </h:form>
+        </f:view>
+    </ui:define>
+
+    <ui:define name="bottom">
+        bottom
+    </ui:define>
+
+</ui:composition>

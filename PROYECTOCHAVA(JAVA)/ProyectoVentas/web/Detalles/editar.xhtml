@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../MasterP.xhtml"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="left">
+        left
+    </ui:define>
+
+    <ui:define name="content">
+        <f:view>
+            <h:form>
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+                     Editar Detalle
+                    </f:facet>
+                    <p:outputLabel value="Numero de detalle:" for="detalle" />
+                    <p:inputText id="detalle" value="#{detallevControlador.selected.ndetalle}" title="Id" 
+                                 disabled="true"/>
+                    <p:outputLabel value="Precio Producto:" for="precio" />
+                    <p:inputText id="precio" value="#{detallevControlador.selected.precioP}" title="Nombre" required="true" requiredMessage="The Nombre field is required."/>
+                    
+                    <p:outputLabel value="Cantidad:" for="cantidad" />
+                    <p:inputText id="cantidad" value="#{detallevControlador.selected.cantidadP}" title="Cantidad" required="true" requiredMessage="The Nombre field is required."/>
+                   
+                    <p:outputLabel value="Numero de venta: " for="nventa" />
+                    <p:selectOneMenu id="nventa" value="#{detallevControlador.selected.ventanVenta}"  required="true" requiredMessage="The Tipo field is required.">
+                        <f:selectItems value="#{ventaControlador.listaventas}" />
+                    </p:selectOneMenu>
+                    
+                    <p:outputLabel value="Producto" for="producto" />
+                    <p:selectOneMenu id="producto" value="#{detallevControlador.selected.productocodigo}"  required="true" requiredMessage="The Tipo field is required.">
+                        <f:selectItems value="#{productoControlador.listaproductos}" />
+                    </p:selectOneMenu>
+                    
+                </p:panelGrid>
+                <h:commandButton action="#{detallevControlador.editar()}" value="editar" />
+                
+                <p:commandButton action="#{detallevControlador.prepararLista()}" value="Ir a los detalles" immediate="true"/>
+            </h:form>
+        </f:view>
+    </ui:define>
+
+    <ui:define name="bottom">
+        bottom
+    </ui:define>
+
+</ui:composition>
